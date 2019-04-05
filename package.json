@@ -1,0 +1,17 @@
+{
+  "name": "mts-utils",
+  "version": "1.0.0",
+  "description": "one utils package help you improve your progrem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "utils",
+    "es6",
+    "javascript",
+    "js"
+  ],
+  "author": "ever",
+  "license": "ISC"
+}
