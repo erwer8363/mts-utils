@@ -36,7 +36,8 @@ const delRepeatUseObj = function (arr) {
     return tmpArr
 }
 
-const quickSort = function (arr) {
+const quickSort = function (sourceArr) {
+    let arr = [...sourceArr]
     let len = arr.length
     if (len <= 1) {
         return arr
@@ -53,8 +54,30 @@ const quickSort = function (arr) {
             rightArr.push(element)
         }
     })
-
     return [...quickSort(leftArr), midValue, ...quickSort(rightArr)]
+}
+
+const bubbleSort = function (sourceArr) {
+    console.time('冒泡排序耗时')
+    let arr = [...sourceArr]
+    let len = arr.length
+    if (len <= 1) {
+        return arr
+    }
+
+    let i = len
+    while (i > 0) {
+        let pos = 0
+        for (let j = 0; j < i; j++) {
+            if (arr[j] > arr[j+1]) {
+                pos = j
+                [j+1, j] = [j, j+1]
+            }         
+        }
+        i = pos
+    }
+    console.timeEnd('冒泡排序耗时')
+    return arr
 }
 
 
@@ -89,5 +112,6 @@ export {
     fontFun,
     delRepeat,
     delRepeatUseObj,
-    quickSort
+    quickSort,
+    bubbleSort
 }
