@@ -58,7 +58,6 @@ const quickSort = function (sourceArr) {
 }
 
 const bubbleSort = function (sourceArr) {
-    console.time('冒泡排序耗时')
     let arr = [...sourceArr]
     let len = arr.length
     if (len <= 1) {
@@ -68,15 +67,35 @@ const bubbleSort = function (sourceArr) {
     let i = len
     while (i > 0) {
         let pos = 0
+        let tmp
         for (let j = 0; j < i; j++) {
             if (arr[j] > arr[j+1]) {
                 pos = j
-                [j+1, j] = [j, j+1]
+                tmp = arr[j]
+                arr[j] = arr[j+1]
+                arr[j+1] = tmp
             }         
         }
         i = pos
     }
-    console.timeEnd('冒泡排序耗时')
+    return arr
+}
+
+const selectSort = function (sourceArr) {
+    let arr = [...sourceArr]
+    let len = arr.length
+    let minIndex, temp
+    for (let i = 0; i < len - 1; i++) {
+        minIndex = i
+        for (let j = i; j < len; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j
+            }
+        }
+        temp = arr[i]
+        arr[i] = arr[minIndex]
+        arr[minIndex] = temp
+    }
     return arr
 }
 
@@ -113,5 +132,6 @@ export {
     delRepeat,
     delRepeatUseObj,
     quickSort,
-    bubbleSort
+    bubbleSort,
+    selectSort
 }
