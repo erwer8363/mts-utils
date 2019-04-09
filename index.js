@@ -36,6 +36,14 @@ const delRepeatUseObj = function (arr) {
     return tmpArr
 }
 
+/*****************************排序 */
+
+function swap(arr, i, j) {
+    let tmp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = tmp
+}
+
 const quickSort = function (sourceArr) {
     let arr = [...sourceArr]
     let len = arr.length
@@ -80,11 +88,11 @@ const bubbleSort = function (sourceArr) {
     }
     return arr
 }
-
+/**选择排序 */
 const selectSort = function (sourceArr) {
     let arr = [...sourceArr]
     let len = arr.length
-    let minIndex, temp
+    let minIndex
     for (let i = 0; i < len - 1; i++) {
         minIndex = i
         for (let j = i; j < len; j++) {
@@ -92,13 +100,60 @@ const selectSort = function (sourceArr) {
                 minIndex = j
             }
         }
-        temp = arr[i]
-        arr[i] = arr[minIndex]
-        arr[minIndex] = temp
+        swap(arr, i, minIndex)
     }
     return arr
 }
+/**堆排序 */
+const heapSort = function (sourceArr) {
+    let arr = [...sourceArr]
+    let len = arr.length
+    if (len <= 1) return arr
+    for (let middle = Math.floor(len /2); middle >= 0; middle--) {
+        maxHeapify(arr, middle, len)
+    }
+    for (let j=len; j >= 1; j--) {
+        swap(arr, 0, j-1)
+        maxHeapify(arr, 0, j-2)
+    }
+    return arr
+}
+function maxHeapify(arr, mid_index, len) {
+    let largest_index = mid_index
+    let left_index = 2 * mid_index +1
+    let right_index = 2 * mid_index + 2
+    if (left_index <= len && arr[left_index] > arr[largest_index]) {
+        largest_index = left_index
+    }
+    if (right_index <= len && arr[right_index] > arr[largest_index]) {
+        largest_index = right_index
+    }
 
+    if (largest_index != mid_index) {
+        swap(arr, mid_index, largest_index)
+        maxHeapify(arr, largest_index, len)
+    }
+}
+/**插入排序 */
+const binaryInsertSort = function (sourceArr) {
+    let arr = [...sourceArr]
+    const len = arr.length
+    for(let i = 1; i < len; i++) {
+        let current_ele = arr[i]
+        let left = 0, right = i -1
+        while (left <= right) {
+            let middle = parseInt((left + right) / 2)
+            if (current_ele < arr[middle]) right = middle - 1
+            else left = middle + 1
+        }
+
+        for (let j = i - 1; j >= left; j--) {
+            arr[j+1] = arr[j]
+        }
+        arr[left] = current_ele
+    }
+    return arr
+}
 
 
 

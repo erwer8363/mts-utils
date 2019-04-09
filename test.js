@@ -76,3 +76,27 @@
     }
     console.log(selectSort([3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48, 23, 45, 34]))
 }
+{
+    const binaryInsertSort = function (sourceArr) {
+        console.time('插入排序')
+        let arr = [...sourceArr]
+        const len = arr.length
+        for (let i = 1; i < len; i++) {
+            let current_ele = arr[i]
+            let left = 0, right = i - 1
+            while (left <= right) {
+                let middle = parseInt((left + right) / 2)
+                if (current_ele < arr[middle]) right = middle - 1
+                else left = middle + 1
+            }
+
+            for (let j = i - 1; j >= left; j--) {
+                arr[j + 1] = arr[j]
+            }
+            arr[left] = current_ele
+        }
+        console.timeEnd('插入排序')
+        return arr
+    }
+    console.log(binaryInsertSort([3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48, 23, 45, 34]))
+}
