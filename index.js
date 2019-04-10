@@ -1,18 +1,18 @@
 // 移动端计算rem
-const fontFun = function () { 
-    let docEl = document.documentElement
-    let resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
-    const recalc = function () {
-        let clientWidth = docEl.clientWidth
-        if (!clientWidth) return
-        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px'
-    }
+// const fontFun = function () { 
+//     let docEl = document.documentElement
+//     let resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
+//     const recalc = function () {
+//         let clientWidth = docEl.clientWidth
+//         if (!clientWidth) return
+//         docEl.style.fontSize = 100 * (clientWidth / 750) + 'px'
+//     }
 
-    if (!document.addEventListener) return
-    window.addEventListener(resizeEvt, recalc, false)
-    window.addEventListener('pageshow', recalc, false)
-    window.addEventListener('DOMContentLoaded', recalc, false)
-  }
+//     if (!document.addEventListener) return
+//     window.addEventListener(resizeEvt, recalc, false)
+//     window.addEventListener('pageshow', recalc, false)
+//     window.addEventListener('DOMContentLoaded', recalc, false)
+//   }
 // 删除重复元素
 const delRepeat = function (arr) {
     let tmpArr = []
