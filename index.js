@@ -182,8 +182,8 @@ const binaryInsertSort = function (sourceArr) {
 
 
 
-export {
-    fontFun,
+module.exports = {
+    // fontFun,
     delRepeat,
     delRepeatUseObj,
     quickSort,
