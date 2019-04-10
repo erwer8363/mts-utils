@@ -1,6 +1,6 @@
 {
   "name": "mts-utils",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "one utils package help you improve your progrem",
   "main": "index.js",
   "scripts": {
